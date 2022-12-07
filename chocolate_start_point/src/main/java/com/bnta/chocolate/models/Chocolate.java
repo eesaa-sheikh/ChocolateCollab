@@ -12,10 +12,8 @@ public class Chocolate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Column(name ="name")
     private String name;
-
 
     @Column(name ="cocoaPercentage")
     private int cocoaPercentage;
@@ -65,4 +63,5 @@ public class Chocolate {
     public void setEstate(Estate estate) {
         this.estate = estate;
     }
+
 }

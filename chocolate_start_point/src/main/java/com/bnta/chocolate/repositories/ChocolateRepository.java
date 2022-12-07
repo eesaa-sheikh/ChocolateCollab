@@ -9,5 +9,7 @@ import java.util.List;
 @Repository
 public interface ChocolateRepository extends JpaRepository<Chocolate, Long> {
 
+    List<Chocolate> findChocolateByCocoaPercentageLessThan(int cocoaPercentage);
+
     //A test push
 }
