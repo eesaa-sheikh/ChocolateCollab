@@ -5,12 +5,14 @@ import com.bnta.chocolate.repositories.EstateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+
+@RestController
+@RequestMapping("estates")
 public class EstateController {
     @Autowired
     EstateRepository estateRepository;
@@ -25,6 +27,12 @@ public class EstateController {
     public ResponseEntity<Optional<Estate>> getEstate(@PathVariable Long id){
         var estate = estateRepository.findById(id);
         return new ResponseEntity<>(estate, estate.isEmpty() ? HttpStatus.OK : HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping
+    public ResponseEntity<Estate> createEntity(@RequestParam Estate newEstate){
+        estateRepository.save(newEstate);
+        return new ResponseEntity<>(newEstate, HttpStatus.CREATED);
     }
 
 
