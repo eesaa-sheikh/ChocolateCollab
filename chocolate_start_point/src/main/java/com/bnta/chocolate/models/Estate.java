@@ -20,9 +20,9 @@ public class Estate {
     @Column(name = "country")
     private String country;
 
-    @OneToMany(mappedBy = "chocolate")
-    //Need a join Coloumn here later on§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
-    @JsonIgnoreProperties ({"estates"})
+    @OneToMany(mappedBy = "estate")
+    //Need a join Column here later on§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    @JsonIgnoreProperties ({"estate"})
     private List<Chocolate> chocolates;
 
 
@@ -31,6 +31,10 @@ public class Estate {
         this.country = country;
         this.chocolates = new ArrayList<Chocolate>();
     }
+
+
+
+
 
     public Estate() {
     }
@@ -63,7 +67,9 @@ public class Estate {
         return chocolates;
     }
 
-    public void setChocolates(List<Chocolate> chocolates) {
+    public void setChocolates(ArrayList<Chocolate> chocolates) {
         this.chocolates = chocolates;
     }
+
+    public void addChocolate(Chocolate chocolate){this.chocolates.add(chocolate);}
 }
