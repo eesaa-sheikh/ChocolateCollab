@@ -7,20 +7,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
+@Entity(name = "estates")
 public class Estate {
 
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @Column(name = "name")
     private String name;
 
-
+    @Column(name = "country")
     private String country;
 
-
+    @OneToMany(mappedBy = "chocolate")
+    //Need a join Coloumn here later on§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
+    @JsonIgnoreProperties ({"estates"})
     private List<Chocolate> chocolates;
+
 
     public Estate(String name, String country) {
         this.name = name;
